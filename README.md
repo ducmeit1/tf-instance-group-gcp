@@ -10,6 +10,8 @@ This module will:
 
 ## Usages
 
+> **Attentions**: There are two ways to image for instance template, you could use your own image, or base image on GCP. To use base image, please define family_image and project_image_id as example below. Otherwise, you must set image by use source_image.
+
 ```hcl
 module "instance-group" {
     source                              = "github.com/ducmeit1/tf-instance-group-gcp"
@@ -21,7 +23,8 @@ module "instance-group" {
     tags                                = "my-instance-group"
     description                         = "my instance group have 3 instances installed ubuntu 1804 os"
     machine_type                        = "n1-standard-1"
-    source_image                        = "ubuntu-1804-lts"
+    family_image                        = "debian-9"
+    project_image_id                    = "debian-cloud"
     target_size                         = 3
     startup_script                      = "gs://my-gcs-bucket/scripts/startup-script.sh"
     shutdown_script                     = "gs://my-gcs-bucket/scripts/shutdown-script.sh"

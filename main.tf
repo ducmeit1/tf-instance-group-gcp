@@ -115,6 +115,7 @@ resource "google_compute_instance_template" "default" {
 # This is a workaround for a provider bug in Terraform v0.11.8. For more information please refer to:
 # https://github.com/terraform-providers/terraform-provider-google/issues/2067.
 data "google_compute_image" "image" {
-  name    = var.source_image
+  name    = var.source_image != "" ? var.source_image : null
+  family  = var.source_image == "" ? var.family_image : null
   project = var.image_project_id != null ? var.image_project_id : var.gcp_project
 }

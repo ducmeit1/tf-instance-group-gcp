@@ -33,11 +33,6 @@ variable "machine_type" {
   type        = string
 }
 
-variable "source_image" {
-  description = "The source image used to create the boot disk for a instance machine."
-  type        = string
-}
-
 # ---------------------------------------------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 # These parameters have reasonable defaults.
@@ -73,6 +68,19 @@ variable "shutdown_script" {
   default     = ""
 }
 
+variable "source_image" {
+  description = "The source image used to create the boot disk for a instance machine."
+  type        = string
+  default     = ""
+}
+
+variable "family_image" {
+  description = "The family image used to create the boot disk for a instance machine."
+  type        = string
+  default     = "debian-9"
+}
+
+# Use debian-cloud if use family_image is debian-9
 variable "image_project_id" {
   description = "The name of the GCP Project where the image is located. Useful when using a separate project for custom images. If empty, var.gcp_project_id will be used."
   type        = string

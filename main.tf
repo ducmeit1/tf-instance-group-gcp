@@ -20,7 +20,7 @@ resource "google_project_iam_custom_role" "default" {
   role_id     = format("custom_role_%s_ig", var.name)
   title       = format("Custom Role For Instance Group %s-ig", var.name)
   description = format("Custom role for instance group %s-ig", var.name)
-  permissions = var.custom_permissions
+  permissions = var.service_account_custom_permissions
 }
 
 resource "google_project_iam_member" "default_binding" {

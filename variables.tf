@@ -43,6 +43,12 @@ variable "source_image" {
 # These parameters have reasonable defaults.
 # ---------------------------------------------------------------------------------------------------------------------
 
+variable "description" {
+  description = "A description of the instance group; it will be added to the Compute Instance Template."
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   description = "The tag name the Compute Instances will uses to open firewall of network."
   type        = list(string)
@@ -89,12 +95,6 @@ variable "instance_group_target_pools" {
   description = "To use a Load Balancer with the instance group, you must populate this value. Specifically, this is the list of Target Pool URLs to which new Compute Instances in the Instance Group created by this module will be added. Note that updating the Target Pools attribute does not affect existing Compute Instances."
   type        = list(string)
   default     = []
-}
-
-variable "description" {
-  description = "A description of the instance group; it will be added to the Compute Instance Template."
-  type        = string
-  default     = null
 }
 
 # Update Policy
@@ -184,9 +184,7 @@ variable "service_account_roles" {
 variable "service_account_custom_permissions" {
   type        = list(string)
   description = "More custom permission will apply for service account."
-  default     = [
-    "compute.zones.list"
-  ]
+  default     = []
 }
 
 variable "members" {

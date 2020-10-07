@@ -86,7 +86,6 @@ resource "google_compute_instance_template" "default" {
   metadata_startup_script = var.startup_script
   metadata = merge(
     {
-      "group-size" = var.target_size
       # The Terraform Google provider currently doesn't support a `metadata_shutdown_script` argument so we manually
       # set it here using the instance metadata.
       "shutdown-script" = var.shutdown_script

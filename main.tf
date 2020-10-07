@@ -15,25 +15,10 @@ resource "google_service_account_iam_binding" "default" {
     members = var.members
 }
 
-resource "google_project_iam_custom_role" "default" {
-  count = length(var.service_account_custom_permissions) > 0 ? 1 : 0
-  role_id     = format("custom_role_%s_ig", var.name)
-  title       = format("Custom Role For Instance Group %s-ig", var.name)
-  description = format("Custom role for instance group %s-ig", var.name)
-  permissions = var.service_account_custom_permissions
-}
-
 resource "google_project_iam_member" "default_binding" {
   for_each = toset(var.service_account_roles)
   project = var.gcp_project
   role    = each.value
-  member  = format("serviceAccount:%s", google_service_account.default.email)
-}
-
-resource "google_project_iam_member" "custom_role_binding" {
-  count = length(var.service_account_custom_permissions) > 0 ? 1 : 0
-  project = var.gcp_project
-  role    = google_project_iam_custom_role.default.id
   member  = format("serviceAccount:%s", google_service_account.default.email)
 }
 

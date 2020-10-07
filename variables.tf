@@ -181,12 +181,6 @@ variable "service_account_roles" {
   ]
 }
 
-variable "service_account_custom_permissions" {
-  type        = list(string)
-  description = "More custom permission will apply for service account."
-  default     = []
-}
-
 variable "members" {
   description = "List of members in the standard GCP form: user:{email}, serviceAccount:{email}, group:{email}."
   type        = list(string)

@@ -10,7 +10,7 @@ This module will:
 
 ## Usages
 
-> **Attentions**: There are two ways to image for instance template, you could use your own image, or base image on GCP. To use base image, please define family_image and project_image_id as example below. Otherwise, you must set image by use source_image.
+> **Attentions**: There are two ways to set image for instance template, you could use your own image, or base image on GCP. To use base image, please define family_image and project_image_id as example below. Otherwise, you must set image by use source_image.
 
 ```hcl
 module "instance-group" {

@@ -111,7 +111,7 @@ resource "google_compute_instance_template" "default" {
   network_interface {
     network            = data.google_compute_network.network.self_link
     subnetwork         = data.google_compute_subnetwork.subnetwork.self_link
-    subnetwork_project = var.network_project_id != null ? var.network_project_id : var.gcp_network
+    subnetwork_project = var.network_project_id != null ? var.network_project_id : var.gcp_project
   }
 
   service_account {

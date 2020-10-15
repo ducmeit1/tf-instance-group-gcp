@@ -164,6 +164,18 @@ variable "custom_metadata" {
 
 # Disk Settings
 
+variable "preemptible" {
+  description = "Enable preemptible for machine."
+  type        = bool
+  default     = false
+}
+
+variable "root_volume_disk_interface" {
+  description = "The disk interface to use for attaching this disk; either SCSI or NVME."
+  type        = string
+  default     = "SCSI"
+}
+
 variable "root_volume_disk_size_gb" {
   description = "The size, in GB, of the root disk volume on each machine."
   type        = number

@@ -72,14 +72,12 @@ resource "google_compute_region_instance_group_manager" "default" {
 resource "google_compute_instance_template" "default" {
   project           = var.gcp_project
   region            = var.gcp_region
-
+  name              = format("%s-instance-template", var.name)
   name_prefix       = var.name
   description       = var.description
 
-  instance_description = var.description
   machine_type         = var.machine_type
   
-
   tags                    = var.tags
   metadata_startup_script = var.startup_script
   metadata = merge(
@@ -100,11 +98,11 @@ resource "google_compute_instance_template" "default" {
 
   disk {
     boot         = true
-    auto_delete  = false
+    auto_delete  = true
     device_name  = "persistent-disk-0"
     interface    = var.root_volume_disk_interface
     mode         = "READ_WRITE"
-    labels       = {}
+    labels       = null
     type         = "PERSISTENT"
     source_image = data.google_compute_image.image.self_link
     disk_size_gb = var.root_volume_disk_size_gb

@@ -112,6 +112,11 @@ resource "google_compute_instance_template" "default" {
     network            = data.google_compute_network.network.self_link
     subnetwork         = data.google_compute_subnetwork.subnetwork.self_link
     subnetwork_project = var.network_project_id != null ? var.network_project_id : var.gcp_project
+    # This is the way to workaround adding external IP address if enable
+    dynamic "access_config" {
+      for_each = var.enable_pubic_ip ? [""] : []
+      content {}
+    }
   }
 
   service_account {

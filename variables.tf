@@ -170,6 +170,12 @@ variable "preemptible" {
   default     = false
 }
 
+variable "enable_pubic_ip" {
+  description = "Enable adding public ip address for machine."
+  type        = bool
+  default     = false
+}
+
 variable "root_volume_disk_interface" {
   description = "The disk interface to use for attaching this disk; either SCSI or NVME."
   type        = string

@@ -72,7 +72,7 @@ resource "google_compute_region_instance_group_manager" "default" {
 resource "google_compute_instance_template" "default" {
   project           = var.gcp_project
   region            = var.gcp_region
-  name              = format("%s-instance-template", var.name)
+  name              = var.instance_template_name
   description       = var.description
 
   machine_type         = var.machine_type

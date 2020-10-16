@@ -33,6 +33,11 @@ variable "machine_type" {
   type        = string
 }
 
+variable "instance_template_name" {
+  description = "Set a name for instance template of instance group will be created."
+  type        = string
+}
+
 # ---------------------------------------------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 # These parameters have reasonable defaults.

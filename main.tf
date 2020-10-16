@@ -114,7 +114,7 @@ resource "google_compute_instance_template" "default" {
     subnetwork_project = var.network_project_id != null ? var.network_project_id : var.gcp_project
     # This is the way to workaround adding external IP address if enable
     dynamic "access_config" {
-      for_each = var.enable_pubic_ip ? [""] : []
+      for_each = var.enable_pubic_ip ? ["public"] : []
       content {}
     }
   }
